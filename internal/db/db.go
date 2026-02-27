@@ -76,3 +76,58 @@ func GetNotes() ([]Note, error) {
 
 	return notes, rows.Err()
 }
+
+func GetNote(id int) (*Note, error) {
+	query := `
+	SELECT id, title, content, created_at, completed
+	FROM notes
+	WHERE id = ?
+	`
+
+	var note Note
+	err := DB.QueryRow(query, id).Scan(&note.ID, &note.Title, &note.Content, &note.CreatedAt, &note.Completed)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, nil
+		}
+		return nil, err
+	}
+
+	return &note, nil
+}
+
+func GetNode(title string) (*Note, bool, error) {
+	query := `
+	SELECT id, title, content, created_at, completed
+	FROM notes
+	WHERE title = ?
+	ORDER BY created_at DESC
+	`
+
+	rows, err := DB.Query(query, title)
+	if err != nil {
+		return nil, false, err
+	}
+	defer rows.Close()
+
+	var note *Note
+	count := 0
+
+	for rows.Next() {
+		count++
+		if count == 1 {
+			note = &Note{}
+			err := rows.Scan(&note.ID, &note.Title, &note.Content, &note.CreatedAt, &note.Completed)
+			if err != nil {
+				return nil, false, err
+			}
+		}
+	}
+
+	if count == 0 {
+		return nil, false, nil
+	}
+
+	duplicates := count > 1
+	return note, duplicates, rows.Err()
+}

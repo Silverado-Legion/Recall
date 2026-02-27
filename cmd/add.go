@@ -10,11 +10,16 @@ import (
 )
 
 var addCmd = &cobra.Command{
-	Use:   "add",
+	Use:   "add [content] --title [optional]",
 	Short: "Create a new note.",
 	Run: func(cmd *cobra.Command, args []string) {
 		Note := strings.Join(args, " ")
 		Title, _ := cmd.Flags().GetString("title")
+
+		if (Note == "") {
+			fmt.Println("Note cannot be empty.")
+			return
+		}
 
 		if (Title == "") {
 			Title = utils.AutoTitle(Note)
