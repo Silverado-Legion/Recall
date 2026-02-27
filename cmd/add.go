@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"Recall/internal/db"
 	"Recall/utils"
 	"fmt"
 	"strings"
@@ -19,7 +20,11 @@ var addCmd = &cobra.Command{
 			Title = utils.AutoTitle(Note)
 		}
 
-		fmt.Printf("Title: %v\nNote: %v", Title, Note)
+		if err := db.AddNote(Title, Note); err != nil {
+			fmt.Println("Error saving note:", err)
+			return
+		}
+		fmt.Println("Note saved as:", Title)
 	},
 }
 
