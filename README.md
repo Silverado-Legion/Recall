@@ -6,8 +6,8 @@ This README will be filled out more as project progresses. README should be comp
 
 ## To Do:
 ✅ - Add notes, with automatic titling.<br>
-🔁 - Write to database.<br>
-➡️ - List all notes.<br>
+✅ - Write to database.<br>
+🔁 - List all notes.<br>
 ➡️ - Recall notes from database.<br>
 ➡️ - Search for notes.<br>
 ➡️ - Mark notes complete.<br>
