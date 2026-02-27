@@ -6,6 +6,14 @@ import (
 	_ "modernc.org/sqlite"
 )
 
+type Note struct {
+	ID        int
+	Title     string
+	Content   string
+	CreatedAt string
+	Completed bool
+}
+
 var DB *sql.DB
 
 func Init() error {
@@ -41,4 +49,30 @@ func AddNote(title, content string) error {
 
 	_, err := DB.Exec(query, title, content)
 	return err
+}
+
+func GetNotes() ([]Note, error) {
+	query := `
+	SELECT id, title, content, created_at, completed
+	FROM notes
+	ORDER BY created_at DESC
+	`
+
+	rows, err := DB.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var notes []Note
+	for rows.Next() {
+		var note Note
+		err := rows.Scan(&note.ID, &note.Title, &note.Content, &note.CreatedAt, &note.Completed)
+		if err != nil {
+			return nil, err
+		}
+		notes = append(notes, note)
+	}
+
+	return notes, rows.Err()
 }
