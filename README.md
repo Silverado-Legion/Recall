@@ -41,8 +41,8 @@ $ recall list
 🔁 - Recall notes from database.<br>
 ➡️ - Search for notes.<br>
 ➡️ - Mark notes complete.<br>
-⏭️ - Make the outputs more "snappy".
-⏭️ - Implement a smarter title autogeneration system.
+⏭️ - Make the outputs more "snappy".<br>
+⏭️ - Implement a smarter title autogeneration system.<br>
 ⏭️ - Terminal User Interface (in addition to CLI controls).<br>
 ⏭️ - Tasks, which are notes with reminders (or time limits).<br>
 
