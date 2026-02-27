@@ -5,8 +5,8 @@ Fast command-line tool for recalling notes and tasks right from the Terminal. Bu
 This README will be filled out more as project progresses. README should be completely filled out before the core features are complete.
 
 ## To Do:
-🔁 - Add notes, with automatic titling.<br>
-➡️ - Write to database.<br>
+✅ - Add notes, with automatic titling.<br>
+🔁 - Write to database.<br>
 ➡️ - List all notes.<br>
 ➡️ - Recall notes from database.<br>
 ➡️ - Search for notes.<br>
