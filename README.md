@@ -2,7 +2,7 @@
 Fast command-line tool for recalling notes and tasks right from the Terminal. Built with Go.<br>
 `⚠️ ALPHA STAGE - Core Features are Not Complete.`
 
-This README will be filled out more as project progresses. README should be completely filled out before the core features are complete.
+This README will be filled out more as project progresses. README will be completed alongside the commit adding the search feature, which will also mark completion of alpha.
 
 ## Quick Demo:
 ```
@@ -47,13 +47,18 @@ $ recall view Title Here (case sensitive, must be exact)
 $ recall view [note id]
 ```
 
+### Complete Note:
+```
+$ recall done [note id]
+```
+
 ## To Do:
 ✅ - Add notes, with automatic titling.<br>
 ✅ - Write to database.<br>
 ✅ - List all notes.<br>
 ✅ - Recall notes from database.<br>
-🔁 - Mark notes complete.<br>
-➡️ - Search for notes.<br>
+✅ - Mark notes complete.<br>
+🔁 - Search for notes.<br>
 ⏭️ - Make the outputs more "snappy".<br>
 ⏭️ - Implement a smarter title autogeneration system.<br>
 ⏭️ - Terminal User Interface (in addition to CLI controls).<br>

@@ -131,3 +131,14 @@ func GetNode(title string) (*Note, bool, error) {
 	duplicates := count > 1
 	return note, duplicates, rows.Err()
 }
+
+func CompleteNote(id int, done bool) error {
+	query := `
+	UPDATE notes
+	SET completed = ?
+	WHERE id = ?
+	`
+
+	_, err := DB.Exec(query, done, id)
+	return err
+}
